@@ -21,7 +21,7 @@
 |-----------------|-----------------|---------------------------------------------|------------------------------------------------------------------|
 | Tissue-scale    | Blood vessel    | —                                           | (coming)                                                         |
 | Tissue-scale    | Nuclei          | NucMM-Z                                     | `nuc_nucmm-z`                                                    |
-| Cell-scale      | Neurons         | SNEMI3D, BANIS, LiConn-MIT                  | `neuron_snemi/*`, `neuron_nisb/*`, `neuron_liconn_mit`           |
+| Cell-scale      | Neurons         | SNEMI3D, BANIS, LiConn-MIT, [J0126 Zebrafinch](tutorials/neuron_j0126/) | `neuron_snemi/*`, `neuron_nisb/*`, `neuron_liconn_mit`, [`neuron_j0126`](tutorials/neuron_j0126/) |
 | Cell-scale      | Synapses        | CREMI                                       | `syn_cremi`                                                      |
 | Cell-scale      | Fibers          | Linghu26                                    | `fiber_linghu26`                                                 |
 | Organelle-scale | Mitochondria    | Lucchi++, MitoEM, MitoLab, BetaSeg          | `mito_lucchi++/mito_lucchi++`, `mitoEM/*`, `mito_mitolab`, `mito_betaseg` |
@@ -140,7 +140,17 @@ python scripts/main.py --config tutorials/mito_lucchi++/mito_lucchi++.yaml \
     --mode tune --checkpoint <ckpt>
 ```
 
-**6. Drive a workflow with a coding agent** — agent reads a prompt
+**6. Replay the frozen J0126 Zebrafinch decode (advanced):**
+
+The [J0126 tutorial](tutorials/neuron_j0126/) documents the full affinity and
+decoding pipeline. If you already have the frozen three-channel affinity store
+and evaluation inputs, follow the
+[reproduction workflow](tutorials/neuron_j0126/reproduction/) to replay the two
+ABISS ablation rows with non-interactive Slurm jobs. This replay does not train
+a network. The required affinity chunks, masks, labels, and test skeletons are
+not bundled with the repository; see the workflow's **Frozen inputs** section.
+
+**7. Drive a workflow with a coding agent** — agent reads a prompt
 and runs the steps for you (interactive):
 
 ```bash
